@@ -51,7 +51,7 @@ services:
       - ganache
     environment:
       SOLC_VERSION: '^0.5.5'
-      ETH_HOST: ganache
+      ETH_HOST: skale
     logging:
       options:
         max-size: 10m
