@@ -9,7 +9,7 @@
     "dev": "nodemon build/index.js",
     "build": "babel src -d build --copy-files",
     "watch": "babel src -d build --copy-files --watch",
-    "migrate": "truffle migrate --network=ganache --reset",
+    "migrate": "truffle migrate --network=skale --reset",
     "fix": "npm run format && npm run lint -- --fix",
     "format": "prettier --write \"**/*.{json,css,scss,md,html,sol}\"",
     "lint": "eslint .",

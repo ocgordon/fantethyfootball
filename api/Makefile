@@ -5,7 +5,7 @@ truffle-test:
 	docker-compose run --rm truffle test contracts/test/*.js
 
 truffle-migrate:
-	docker-compose run --rm truffle migrate --network=ganache --reset
+	docker-compose run --rm truffle migrate --network=skale --reset
 
 truffle-clean:
 	rm ./truffle/build/contracts/*

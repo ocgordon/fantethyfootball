@@ -11,10 +11,10 @@ services:
       - ./package.json:/app/package.json:delegated
     depends_on:
       - api-watch
-      - ganache
+      # - ganache
     environment:
       VIRTUAL_HOST: fantethy-api.docker
-      WEB3_PROVIDER: 'http://ganache:8545'
+      WEB3_PROVIDER: 'http://ethboston0.skalenodes.com:10200'
 
   api-watch:
     build:
@@ -31,11 +31,11 @@ services:
       options:
         max-size: 10m
 
-  ganache:
-    image: trufflesuite/ganache-cli:latest
-    command: ganache-cli -m 'candy maple cake sugar pudding cream honey rich smooth crumble sweet treat' --networkId '333' --db /ganache-data
-    volumes:
-      - ganache-volume:/ganache-data
+  # ganache:
+  #   image: trufflesuite/ganache-cli:latest
+  #   command: ganache-cli -m 'candy maple cake sugar pudding cream honey rich smooth crumble sweet treat' --networkId '333' --db /ganache-data
+  #   volumes:
+  #     - ganache-volume:/ganache-data
 
   truffle:
     image: ajmay/truffle:5.0.9
@@ -47,11 +47,11 @@ services:
       - ./contracts:/truffle/contracts:delegated
       - ./migrations:/truffle/migrations:delegated
       - ./build/contracts:/truffle/build/contracts:delegated
-    depends_on:
-      - ganache
+    # depends_on:
+    #   - ganache
     environment:
       SOLC_VERSION: '^0.5.5'
-      ETH_HOST: ganache
+      ETH_HOST: skale
     logging:
       options:
         max-size: 10m
