@@ -85,6 +85,8 @@ export const getContractWithAddress = account => {
   let obt = null;
 
   try {
+    console.log(Object.keys(Fantethy.networks)[0]);
+
     const { address } = Fantethy.networks[Object.keys(Fantethy.networks)[0]];
 
     const provider = getProvider();
@@ -125,7 +127,9 @@ export const getContract = () => {
  * @param {String} account - Account of signer (i.e., the sender of transactions).
  * @return {ethers.Contract} - Returns contract object.
  */
-export const getContractWithSigner = (contractJson, address, account) => {
+export const getContractWithSigner = account => {
+  const contractJson = Fantethy;
+  const { address } = Fantethy.networks[Object.keys(Fantethy.networks)[0]];
   try {
     const provider = getProvider();
     const contract = new ethers.Contract(address, contractJson.abi, provider);

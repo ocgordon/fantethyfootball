@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-// import fantethy from './routes/fantethy';
+import fantethy from './routes/fantethy';
 import accounts from './routes/accounts';
 import events from './routes/events';
 
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 // put your routes here
-// app.use('/fantethy', fantethy);
+app.use('/fantethy', fantethy);
 app.use('/accounts', accounts);
 app.use('/events', events);
 
