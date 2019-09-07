@@ -8,14 +8,30 @@ const Draft = () => {
 
   const fetchTeamlist = async () => {
     try {
-      const resp = await getRequest('fantethy');
-      const playerList = await getRequest('fantethy/players');
-      setPlayersList(playerList);
-      setTeamlist(resp);
+      const teamRsp = await getRequest('fantethy');
+      const playerRsp = await getRequest('fantethy/players');
+      setTeamlist(teamRsp);
+      refreshPlayerList(playerRsp, teamRsp);
     } catch (e) {
       console.log(e);
     }
   };
+
+  const refreshPlayerList = (playerRsp, teamRsp) => {
+    //REALLY bad and terrible never do this
+    let parsedPlayerList = playerRsp;
+    teamRsp.map((team) => {
+      team.map((individual) => {
+        let playerName = JSON.parse(individual);
+        parsedPlayerList.forEach((player) => {
+          if (player.name === playerName.name) {
+            player.taken = true;
+          }
+        });
+      })
+    })
+    setPlayersList(parsedPlayerList);
+  }
 
   const addPlayerToTeam = async (i) => {
     try {
@@ -38,8 +54,11 @@ const Draft = () => {
       height="100px"
       alt="Player"
       src={playerImage(i.id)}
+      className={`taken-${i.taken}`}
     />
   );
+
+  console.log(playersList)
 
   const teamList = (team) => {
     const listItem = team.map((i, index) =>
