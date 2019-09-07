@@ -13,8 +13,14 @@ contract Fantethy {
 
     mapping(address => string[]) public footballPlayers;
 
+    mapping(address => bool) public entryFee;
+
     function getAllUsers() public view returns(address[] memory) {
         return users;
+    }
+
+    function sendEther(address user) public payable {
+        entryFee[user] = true;
     }
 
     function addPlayersToTeam(address userAccount, string memory footballPlayer) public returns(bool) {
