@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Football from '../football.png';
+import MusicPlayer from './musicplayer';
+import LoginForm from './login';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Container,
-  Divider,
   Grid,
   Header,
   Icon,
@@ -156,9 +159,8 @@ class MobileContainer extends Component {
           <Menu.Item as="a" active>
             Home
           </Menu.Item>
-          <Menu.Item as="a">Work</Menu.Item>
-          <Menu.Item as="a">Company</Menu.Item>
-          <Menu.Item as="a">Careers</Menu.Item>
+          <Menu.Item as="a">About</Menu.Item>
+          <Menu.Item as="a">League</Menu.Item>
           <Menu.Item as="a">Log in</Menu.Item>
           <Menu.Item as="a">Sign Up</Menu.Item>
         </Sidebar>
@@ -176,9 +178,11 @@ class MobileContainer extends Component {
                   <Icon name="sidebar" />
                 </Menu.Item>
                 <Menu.Item position="right">
-                  <Button as="a" inverted>
-                    Log in
-                  </Button>
+                  <a href="/login/">
+                    <Button as="a" href="/login" inverted>
+                      Log In
+                    </Button>
+                  </a>
                   <Button as="a" inverted style={{ marginLeft: '0.5em' }}>
                     Sign Up
                   </Button>
@@ -232,7 +236,7 @@ const HomepageLayout = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
-            <Image size="large" src="./football.png" className="App-logo" alt="logo" />
+            <Image size="large" src={Football} className="App-logo" alt="logo" />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -245,7 +249,7 @@ const HomepageLayout = () => (
 
     <Segment inverted vertical style={{ padding: '5em 0em' }}>
       <Container>
-        <Grid divided inverted stackable>
+        {/* <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}>
               <Header inverted as="h4" content="About" />
@@ -274,7 +278,7 @@ const HomepageLayout = () => (
               </p>
             </Grid.Column>
           </Grid.Row>
-        </Grid>
+        </Grid> */}
       </Container>
     </Segment>
   </ResponsiveContainer>
