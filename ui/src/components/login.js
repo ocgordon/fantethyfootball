@@ -1,5 +1,5 @@
 import React from 'react';
-import Football from '../football.png';
+import Logo from '../logo.png';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import Web3Obj from './torushelper';
 import Torus from '@toruslabs/torus-embed';
@@ -20,7 +20,7 @@ const LoginForm = () => {
     <Grid textAlign="center" style={{ height: '100vh' }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="green" textAlign="center">
-          <Image src={Football} /> Log in to your account
+          <Image src={Logo} /> Log in to your account
         </Header>
         <Form size="large">
           <Segment stacked>

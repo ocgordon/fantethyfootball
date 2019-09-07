@@ -1,12 +1,12 @@
 import React from 'react';
-import Football from '../football.png';
+import Logo from '../logo.png';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 
 const SignUpForm = () => (
   <Grid textAlign="center" style={{ height: '100vh' }} verticalAlign="middle">
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as="h2" color="green" textAlign="center">
-        <Image src={Football} /> Create a new account
+        <Image src={Logo} /> Create a new account
       </Header>
       <Form size="large">
         <Segment stacked>

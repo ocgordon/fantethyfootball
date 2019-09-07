@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Football from '../football.png';
+import Logo from '../logo.png';
 import MusicPlayer from './musicplayer';
 import LoginForm from './login';
 import { Link } from 'react-router-dom';
@@ -242,7 +242,7 @@ const HomepageLayout = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
-            <Image size="large" src={Football} className="App-logo" alt="logo" />
+            <Image size="large" src={Logo} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
