@@ -1,15 +1,16 @@
 import React from 'react';
-import football from './football.png';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import HomepageLayout from './components/homepage';
+import LoginForm from './components/login';
+import SignUpForm from './components/signup';
 
 function Index() {
   return <h2>Home</h2>;
 }
 
 function About() {
-  return <h2>About</h2>;
+  return <h2>Log In</h2>;
 }
 
 function Users() {
@@ -27,17 +28,17 @@ function AppRouter() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/about/">About</Link>
+                <Link to="/login/">Log In</Link>
               </li>
               <li>
-                <Link to="/users/">Users</Link>
+                <Link to="/signup/">Sign Up</Link>
               </li>
             </ul>
           </nav>
 
           <Route path="/" exact component={HomepageLayout} />
-          <Route path="/about/" component={About} />
-          <Route path="/users/" component={Users} />
+          <Route path="/login/" component={LoginForm} />
+          <Route path="/signup/" component={SignUpForm} />
         </div>
       </Router>
     </div>
@@ -45,30 +46,3 @@ function AppRouter() {
 }
 
 export default AppRouter;
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={football} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-{
-  /* <img src={football} className="App-logo" alt="logo" /> */
-}
-
-// export default App;
