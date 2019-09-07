@@ -33,7 +33,7 @@ const getWidth = () => {
  * such things.
  */
 const HomepageHeading = ({ mobile }) => (
-  <Container text>
+  <Container text style={{position: 'absolute', left: '10%'}}>
     <Header
       as="h1"
       content="Fantethy Football"
@@ -93,6 +93,14 @@ class DesktopContainer extends Component {
             style={{ minHeight: 700, padding: '1em 0em' }}
             vertical
           >
+            <img src='hero.jpg' style={{ position: 'absolute',
+              left: '0',
+              top: '0',
+              width: '100%'}}
+            />
+            <div class="hero-wrapper">
+                <div class="hero-diagonal-gradient"></div>
+            </div>
             <HomepageHeading />
           </Segment>
         </Visibility>
