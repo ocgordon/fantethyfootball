@@ -1,6 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, List, Image, ListItem} from 'semantic-ui-react';
+import { Grid, List, Image, Button } from 'semantic-ui-react';
 import { getRequest, addPlayers } from '../api';
+import Torus from '@toruslabs/torus-embed';
+import Web3 from 'web3';
+
+// const torusFunction = async () => {
+//   // const torus = new Torus();
+//   // await torus.init();
+//   // await torus.ethereum.enable()
+//   // const web3 = new Web3(torus.provider);
+//   // Start using web3 in your dapp
+//   // window.torus = torus;
+//   // window.ethereum = web3;
+//   // web3.personal.unlockAccount("0x9ac74414d8363ae73300ae62e69c80e217b56d50", 'pass');
+//   // const toAddress = "0xdc3821270026617A3c712f04df9e891c925A1d42"
+//   // const amount = .1; //willing to send 2 ethers
+//   // const amountToSend = web3.toWei(amount, "ether"); //convert to wei value
+//   // var send = web3.eth.sendTransaction({from:"0x9ac74414d8363ae73300ae62e69c80e217b56d50",to:toAddress, value:amountToSend});
+//   // console.log(send);
+// };
 
 const Draft = () => {
   const [Teamlist, setTeamlist] = useState([[0], [0], [0], [0]]);
@@ -58,8 +76,6 @@ const Draft = () => {
     />
   );
 
-  console.log(playersList)
-
   const teamList = (team) => {
     const listItem = team.map((i, index) =>
       <List.Item>
@@ -94,6 +110,7 @@ const Draft = () => {
   return (
     <Grid divided>
       <Grid.Row centered>
+        {/* <Button onClick={() => torusFunction()}/> */}
         {playerList}
       </Grid.Row>
       <Grid.Row columns={4} centered>
