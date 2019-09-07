@@ -1,5 +1,11 @@
 import express from 'express';
-import { getPlayersOnTeam, addPlayersToTeam, assignPoints, getPoints } from '../services/fantethy';
+import {
+  getPlayersOnTeam,
+  addPlayersToTeam,
+  assignPoints,
+  getPoints,
+  getAllPoints,
+} from '../services/fantethy';
 
 const router = express.Router();
 
@@ -20,6 +26,16 @@ router.get('/players', async (req, res, next) => {
 
   try {
     res.status(200).send(players);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get('/points', async (req, res, next) => {
+  console.log('working');
+  try {
+    const pointResponse = await getAllPoints();
+    res.status(200).send(pointResponse);
   } catch (e) {
     next(e);
   }
