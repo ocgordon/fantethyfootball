@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import HomepageLayout from './components/homepage';
 import LoginForm from './components/login';
 import SignUpForm from './components/signup';
+import Draft from './pages/Draft';
 
 function Index() {
   return <h2>Home</h2>;
@@ -39,6 +40,7 @@ function AppRouter() {
           <Route path="/" exact component={HomepageLayout} />
           <Route path="/login/" component={LoginForm} />
           <Route path="/signup/" component={SignUpForm} />
+          <Route path="/draft" exact component={Draft} />
         </div>
       </Router>
     </div>

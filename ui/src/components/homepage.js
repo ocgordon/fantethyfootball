@@ -101,12 +101,12 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Menu.Item as="a" active>
+                <Menu.Item as="a" href='/home' active>
                   Home
                 </Menu.Item>
-                <Menu.Item as="a">Work</Menu.Item>
-                <Menu.Item as="a">Company</Menu.Item>
-                <Menu.Item as="a">Careers</Menu.Item>
+                <Menu.Item as="a" href='/draft'>Draft</Menu.Item>
+                <Menu.Item as="a" href='/players'>My Players</Menu.Item>
+                <Menu.Item as="a" href='/league'>My League</Menu.Item>
                 <Menu.Item position="right">
                   <Button as="a" inverted={!fixed}>
                     Log in
