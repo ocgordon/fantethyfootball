@@ -10,6 +10,8 @@ const torusFunction = async () => {
   await torus.login(); // await torus.ethereum.enable()
   const web3 = new Web3(torus.provider);
   // Start using web3 in your dapp
+  window.torus = torus;
+  window.ethereum = web3;
   console.log(web3.eth.accounts[0]);
 };
 

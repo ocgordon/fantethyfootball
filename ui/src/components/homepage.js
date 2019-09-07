@@ -197,27 +197,26 @@ const HomepageLayout = () => (
         <Grid.Row>
           <Grid.Column width={8}>
             <Header as="h3" style={{ fontSize: '2em' }}>
-              We Help Companies and Companions
+              Manage Your Fantasy Team with Blockchain
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              We can give your company superpowers to do things that they never thought possible.
-              Let us delight your customers and empower your needs... through pure data analytics.
+              Fantethy allows you to manage your entry fees, team draft, and payouts through
+              blockchain. As players gain points throughout the season, Fantethy dynamically
+              calculates their value, ensuring that you get the perfect payout at the end of the
+              season! Booster packs also allow for you to spice up your fantasy play by exchanging
+              your players for random players of the same value with friends all over the world.
             </p>
             <Header as="h3" style={{ fontSize: '2em' }}>
-              We Make Bananas That Can Dance
+              Compete with Football Fans Around the World
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              Yes that's right, you thought it was the stuff of dreams, but even bananas can be
-              bioengineered.
+              Friends aren't big football fans? No worries! With Fantethy, you can compete with a
+              league of users anywhere in the world. All you need is an internet connection, and
+              you're ready to get rolling.
             </p>
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
             <Image size="large" src={Logo} />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column textAlign="center">
-            <Button size="huge">Check Them Out</Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>
