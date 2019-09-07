@@ -4,10 +4,13 @@ import { getRequest, addPlayers } from '../api';
 
 const Draft = () => {
   const [Teamlist, setTeamlist] = useState([[0], [0], [0], [0]]);
+  const [playersList, setPlayersList] = useState([]);
 
   const fetchTeamlist = async () => {
     try {
       const resp = await getRequest('fantethy');
+      const playerList = await getRequest('fantethy/players');
+      setPlayersList(playerList);
       setTeamlist(resp);
     } catch (e) {
       console.log(e);
@@ -16,7 +19,7 @@ const Draft = () => {
 
   const addPlayerToTeam = async (i) => {
     try {
-      await addPlayers('fantethy/0x627306090abaB3A6e1400e9345bC60c78a8BEf57', i);
+      await addPlayers('fantethy/0x627306090abaB3A6e1400e9345bC60c78a8BEf57', JSON.stringify(i));
       fetchTeamlist();
     } catch (e) {
       console.log(e);
@@ -27,14 +30,14 @@ const Draft = () => {
     fetchTeamlist();
   }, []);
 
-  const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const playerImage = (id) => 'https://a.espncdn.com/i/headshots/nfl/players/full/'+parseInt(10460+id)+'.png';
 
-  const playerList = numbers.map((i) =>
+  const playerList = playersList.map((i) =>
     <img
       onClick={() => addPlayerToTeam(i)}
       height="100px"
       alt="Player"
-      src={'https://a.espncdn.com/i/headshots/nfl/players/full/'+parseInt(10460+i)+'.png'}
+      src={playerImage(i.id)}
     />
   );
 
@@ -47,10 +50,10 @@ const Draft = () => {
             height: '35px'
           }}
           avatar
-          src={'https://a.espncdn.com/i/headshots/nfl/players/full/'+parseInt(10460+index)+'.png'}
+          src={playerImage((JSON.parse(i)).id)}
         />
         <List.Content>
-          <List.Header>{i}</List.Header>
+          <List.Header>{(JSON.parse(i)).name}</List.Header>
         </List.Content>
       </List.Item>
     );
@@ -64,7 +67,7 @@ const Draft = () => {
     <Grid.Column>
       <h1>{name}'s Team</h1>
       <List animated verticalAlign='middle'>
-        {teamList(Teamlist[index])}
+        {Teamlist[index].length > 0 && teamList(Teamlist[index])}
       </List>
     </Grid.Column>
   );

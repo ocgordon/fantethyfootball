@@ -3,6 +3,28 @@ import { getPlayersOnTeam, addPlayersToTeam } from '../services/fantethy';
 
 const router = express.Router();
 
+router.get('/players', async (req, res, next) => {
+  const players = [
+    { name: 'Eli Manning', id: 0 },
+    { name: 'Myles Garrett', id: 1 },
+    { name: 'Devaroe Lawrence', id: 2 },
+    { name: 'Larry Ogunjobi', id: 3 },
+    { name: 'Sheldon Richardson', id: 4 },
+    { name: 'Chris Smith', id: 5 },
+    { name: 'Chad Thomas', id: 6 },
+    { name: 'Olivier Vernon', id: 7 },
+    { name: 'Adarius Taylor', id: 8 },
+    { name: 'Malik Jefferson', id: 9 },
+    { name: 'Mack Wilson', id: 10 },
+  ];
+
+  try {
+    res.status(200).send(players);
+  } catch (e) {
+    next(e);
+  }
+});
+
 router.get('/', async (req, res, next) => {
   const users = [
     '0x627306090abab3a6e1400e9345bc60c78a8bef57',

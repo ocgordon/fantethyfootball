@@ -14,8 +14,8 @@ const handleResponse = (resp) => {
 
 const headerType = { Accept: 'application/json', 'Content-Type': 'application/json' };
 
-export const getRequest = async (user) => {
-  const response = await fetch(`${API_URL}/${user}`, {
+export const getRequest = async (endpoint) => {
+  const response = await fetch(`${API_URL}/${endpoint}`, {
     method: 'GET',
     headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
   });
