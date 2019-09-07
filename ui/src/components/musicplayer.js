@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-const useAudio = url => {
-  const [audio] = useState(new Audio(url));
-  const [playing, setPlaying] = useState(false);
-
-  const toggle = () => setPlaying(!playing);
-
+const MusicPlayer = url => {
+  // const [playing] = useState(false);
+  console.log('music player render');
   useEffect(() => {
-    playing ? audio.play() : audio.pause();
-  }, [playing]);
+    const audio = new Audio('song.mp3');
+    console.log('use effect');
+    try {
+      audio.play();
+    } catch (err) {
+      console.error('audio error', err);
+    }
+  }, []);
 
-  return [playing, toggle];
-};
-
-const MusicPlayer = ({ url }) => {
-  const [playing, toggle] = useAudio(url);
-
-  return (
-    <div>
-      <button onClick={toggle}>{playing ? 'Pause' : 'Play'}</button>
-    </div>
-  );
+  return [null];
 };
 
 export default MusicPlayer;

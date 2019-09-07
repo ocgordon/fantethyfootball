@@ -7,6 +7,7 @@ import SignUpForm from './components/signup';
 import Draft from './pages/Draft';
 import Players from './pages/Players';
 import League from './pages/League';
+import MusicPlayer from './components/musicplayer';
 import { Button, Container, Menu } from 'semantic-ui-react';
 
 function AppRouter() {
@@ -60,6 +61,7 @@ function AppRouter() {
           <Route path="/draft/" exact component={Draft} />
           <Route path="/players/" exact component={Players} />
           <Route path="/league/" exact component={League} />
+          <Route path="/music/" exact component={MusicPlayer} />
         </div>
       </Router>
     </div>
