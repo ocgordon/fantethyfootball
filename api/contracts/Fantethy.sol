@@ -1,4 +1,4 @@
-pragma solidity ^0.5.10;
+pragma solidity ^0.5.11;
 pragma experimental ABIEncoderV2;
 
 contract Fantethy {
@@ -17,9 +17,10 @@ contract Fantethy {
         return users;
     }
 
-    function addPlayersToTeam(address user, string memory footballPlayer) public returns(bool) {
-        uint playerLength = footballPlayers[user].length;
-        footballPlayers[user][playerLength] = footballPlayer;
+    function addPlayersToTeam(address user, string[11] memory footballPlayerList) public returns(bool) {
+        for (uint i = 0; i < 11; i++) {
+            footballPlayers[user][i] = footballPlayerList[i];
+        }
         return true;
     }
 

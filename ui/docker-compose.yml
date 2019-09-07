@@ -1,0 +1,17 @@
+version: "3.5"
+
+services:
+  ui:
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src:delegated
+      - ./public:/app/public:delegated
+    environment:
+      VIRTUAL_HOST: ui.fantethy.docker
+    logging:
+      options:
+        max-size: 10m
