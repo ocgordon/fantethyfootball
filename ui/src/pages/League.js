@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Button } from 'semantic-ui-react';
-import { getRequest, addPlayers } from '../api';
+import { getRequest, addPlayers, distributePoints } from '../api';
 
 const League = () => {
   const [Teamlist, setTeamlist] = useState([]);
@@ -8,16 +8,19 @@ const League = () => {
   const fetchTeamlist = async () => {
     try {
       const resp = await getRequest('fantethy');
+      const pointResp = await getRequest(
+        'fantethy/points/0xf17f52151EbEF6C7334FAD080c5704D77216b732',
+      );
+      console.log(pointResp);
       setTeamlist(resp);
     } catch (e) {
       console.log(e);
     }
   };
 
-  const addPlayerToTeam = async i => {
+  const simulateGame = async () => {
     try {
-      await addPlayers('fantethy/0x627306090abaB3A6e1400e9345bC60c78a8BEf57', i);
-      fetchTeamlist();
+      await distributePoints('0xf17f52151EbEF6C7334FAD080c5704D77216b732', 10);
     } catch (e) {
       console.log(e);
     }
@@ -29,6 +32,9 @@ const League = () => {
 
   return (
     <Grid divided>
+      <Grid.Row centered>
+        <Button onClick={() => simulateGame()}>Simulate Game</Button>
+      </Grid.Row>
       <Grid.Row columns={4} centered>
         <Grid.Column>
           <h1>Devon's Team</h1>

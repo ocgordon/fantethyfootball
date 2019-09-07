@@ -25,7 +25,8 @@ contract Fantethy {
         entryFee[user] = true;
     }
 
-    function distributePoints(address user, uint userPoints) public view returns(bool) {
+    function distributePoints(address user, uint points) public returns(bool) {
+        userPoints[user] = points;
         return true;
     }
 

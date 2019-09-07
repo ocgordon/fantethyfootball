@@ -20,3 +20,23 @@ export const getPlayersOnTeam = async user => {
     return new Error(e);
   }
 };
+
+export const assignPoints = async user => {
+  try {
+    const contract = await getContractWithSigner('0x627306090abab3a6e1400e9345bc60c78a8bef57');
+    const pointsDistributed = await contract.distributePoints(user);
+    return pointsDistributed;
+  } catch (e) {
+    return new Error(e);
+  }
+};
+
+export const getPoints = async user => {
+  try {
+    const contract = await getContractWithSigner('0x627306090abab3a6e1400e9345bc60c78a8bef57');
+    const pointsDistributed = await contract.userPoints(user);
+    return pointsDistributed;
+  } catch (e) {
+    return new Error(e);
+  }
+};
