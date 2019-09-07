@@ -1,0 +1,11 @@
+{
+  "name": "fantethy-api-ethereum",
+  "description": "fantethy PoC",
+  "license": "MIT",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "dapp-utils": "1.2.2",
+    "openzeppelin-solidity": "2.3.0"
+  }
+}

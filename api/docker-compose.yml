@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+    command: npm run dev
+    volumes:
+      - ./build:/app/build:delegated
+      - ./package.json:/app/package.json:delegated
+    depends_on:
+      - api-watch
+      - ganache
+    environment:
+      VIRTUAL_HOST: fantethy-api.docker
+      WEB3_PROVIDER: 'http://ganache:8545'
+
+  api-watch:
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+      args:
+        - NPM_TOKEN
+    command: npm run watch
+    volumes:
+      - ./src:/app/src:delegated
+      - ./build:/app/build:delegated
+      - ./.babelrc:/app/.babelrc
+    logging:
+      options:
+        max-size: 10m
+
+  ganache:
+    image: trufflesuite/ganache-cli:latest
+    command: ganache-cli -m 'candy maple cake sugar pudding cream honey rich smooth crumble sweet treat' --networkId '333' --db /ganache-data
+    volumes:
+      - ganache-volume:/ganache-data
+
+  truffle:
+    image: ajmay/truffle:5.0.9
+    command: npm run migrate
+    volumes:
+      - ./truffle/package-lock.json:/truffle/package-lock.json:delegated
+      - ./truffle/package.json:/truffle/package.json:delegated
+      - ./truffle.js:/truffle/truffle.js:delegated
+      - ./contracts:/truffle/contracts:delegated
+      - ./migrations:/truffle/migrations:delegated
+      - ./build/contracts:/truffle/build/contracts:delegated
+    depends_on:
+      - ganache
+    environment:
+      SOLC_VERSION: '^0.5.5'
+      ETH_HOST: ganache
+    logging:
+      options:
+        max-size: 10m
+
+volumes:
+  ganache-volume: {}
+  org-config-volume: {}
