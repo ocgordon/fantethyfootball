@@ -1,6 +1,6 @@
 const API_URL = 'http://fantethy-api.docker';
 
-const handleResponse = (resp) => {
+const handleResponse = resp => {
   let finalResp = {};
   if (!resp.ok) {
     finalResp = { resp };
@@ -14,7 +14,7 @@ const handleResponse = (resp) => {
 
 const headerType = { Accept: 'application/json', 'Content-Type': 'application/json' };
 
-export const getRequest = async (endpoint) => {
+export const getRequest = async endpoint => {
   const response = await fetch(`${API_URL}/${endpoint}`, {
     method: 'GET',
     headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
@@ -27,6 +27,15 @@ export const addPlayers = async (user, player) => {
     method: 'POST',
     headers: headerType,
     body: JSON.stringify({ player }),
+  });
+  return handleResponse(response);
+};
+
+export const distributePoints = async (user, points) => {
+  const response = await fetch(`${API_URL}/fantethy/points/${user}`, {
+    method: 'POST',
+    headers: headerType,
+    body: JSON.stringify({ points }),
   });
   return handleResponse(response);
 };
