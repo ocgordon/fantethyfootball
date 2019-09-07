@@ -1,7 +1,6 @@
 import React from 'react';
 import Logo from '../logo.png';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
-import Web3Obj from './torushelper';
 import Torus from '@toruslabs/torus-embed';
 import Web3 from 'web3';
 
@@ -33,7 +32,7 @@ const LoginForm = () => {
               type="password"
             />
 
-            <Button color="green" fluid size="large">
+            <Button color="green" href="/" fluid size="large">
               Login
             </Button>
           </Segment>
