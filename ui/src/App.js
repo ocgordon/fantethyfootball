@@ -1,42 +1,55 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomepageLayout from './components/homepage';
 import LoginForm from './components/login';
 import SignUpForm from './components/signup';
 import Draft from './pages/Draft';
-
-function Index() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>Log In</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
+import {
+  Button,
+  Container,
+  Menu,
+} from 'semantic-ui-react';
 
 function AppRouter() {
+  const url = window.location.pathname;
+  const { fixed } = false;
+
   return (
     <div className="App">
       <Router>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/login/">Log In</Link>
-              </li>
-              <li>
-                <Link to="/signup/">Sign Up</Link>
-              </li>
-            </ul>
-          </nav>
-
+          <Menu
+              style={{background: '#1b1c1d', margin: '0', paddingTop: '1rem'}}
+              fixed={fixed ? 'top' : null}
+              inverted={!fixed}
+              pointing={!fixed}
+              secondary={!fixed}
+              size="large"
+            >
+              <Container>
+                <Menu.Item as="a" href='/' active={url === '/'}>
+                  Home
+                </Menu.Item>
+                <Menu.Item as="a" href='/draft' active={url === '/draft'}>Draft</Menu.Item>
+                <Menu.Item as="a" href='/players' active={url === '/players'}>My Players</Menu.Item>
+                <Menu.Item as="a" href='/league' active={url === '/league'}>My League</Menu.Item>
+                <Menu.Item position="right">
+                  <Button as="a" href="/login/" inverted={!fixed}>
+                    Log in
+                  </Button>
+                  <Button
+                    as="a"
+                    href="/signup/"
+                    inverted={!fixed}
+                    primary={fixed}
+                    style={{ marginLeft: '0.5em' }}
+                  >
+                    Sign Up
+                  </Button>
+                </Menu.Item>
+              </Container>
+            </Menu>
           <Route path="/" exact component={HomepageLayout} />
           <Route path="/login/" component={LoginForm} />
           <Route path="/signup/" component={SignUpForm} />
