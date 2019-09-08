@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Button } from 'semantic-ui-react';
+import { Grid, Button, List, Image } from 'semantic-ui-react';
 import { getRequest, addPlayers, distributePoints } from '../api';
 
 const League = () => {
-  const [Teamlist, setTeamlist] = useState([]);
+  const [Teamlist, setTeamlist] = useState([[0], [0], [0], [0]]);
   const [Points, setPoints] = useState([0], [0], [0], [0]);
 
   const fetchTeamlist = async () => {
@@ -15,6 +15,29 @@ const League = () => {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const playerImage = id =>
+    'https://a.espncdn.com/i/headshots/nfl/players/full/' + parseInt(10460 + id) + '.png';
+
+  const teamList = team => {
+    const listItem = team.map((i, index) => (
+      <List.Item>
+        <Image
+          style={{
+            width: 'auto',
+            height: '100px',
+          }}
+          avatar
+          src={playerImage(JSON.parse(i).id)}
+        />
+        <List.Content>
+          <List.Header>{JSON.parse(i).name}</List.Header>
+        </List.Content>
+      </List.Item>
+    ));
+
+    return listItem;
   };
 
   const simulateGame = async () => {
@@ -40,22 +63,22 @@ const League = () => {
       <Grid.Row columns={4} centered>
         <Grid.Column>
           <h1>Devon's Team</h1>
-          <Grid.Row>{JSON.stringify(Teamlist[0])}</Grid.Row>
+          <Grid.Row>{teamList(Teamlist[0])}</Grid.Row>
           <Grid.Row>{JSON.stringify(Points[0])}</Grid.Row>
         </Grid.Column>
         <Grid.Column>
           <h1>Olivia's Team</h1>
-          <Grid.Row>{JSON.stringify(Teamlist[1])}</Grid.Row>
+          <Grid.Row>{teamList(Teamlist[1])}</Grid.Row>
           <Grid.Row>{JSON.stringify(Points[1])}</Grid.Row>
         </Grid.Column>
         <Grid.Column>
           <h1>Bob's Team</h1>
-          <Grid.Row>{JSON.stringify(Teamlist[2])}</Grid.Row>
+          <Grid.Row>{teamList(Teamlist[2])}</Grid.Row>
           <Grid.Row>{JSON.stringify(Points[2])}</Grid.Row>
         </Grid.Column>
         <Grid.Column>
           <h1>Stacy's Team</h1>
-          <Grid.Row>{JSON.stringify(Teamlist[3])}</Grid.Row>
+          <Grid.Row>{teamList(Teamlist[3])}</Grid.Row>
           <Grid.Row>{JSON.stringify(Points[3])}</Grid.Row>
         </Grid.Column>
       </Grid.Row>
