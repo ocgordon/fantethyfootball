@@ -45,8 +45,10 @@ const Players = () => {
 
   return (
     <Grid divided>
-      <Grid.Row columns={4} divided>
-        <List horizontal>{teamList(Teamlist[0])}</List>
+      <Grid.Row>
+        <List horizontal center>
+          {teamList(Teamlist[0])}
+        </List>
       </Grid.Row>
     </Grid>
   );
