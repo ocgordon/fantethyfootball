@@ -128,13 +128,13 @@ export const getContract = () => {
  * @return {ethers.Contract} - Returns contract object.
  */
 export const getContractWithSigner = account => {
-  const contractJson = Fantethy;
-  const { address } = Fantethy.networks[Object.keys(Fantethy.networks)[0]];
+  // const contractJson = Fantethy;
+  // const { address } = Fantethy.networks[Object.keys(Fantethy.networks)[0]];
   try {
-    const provider = getProvider();
-    const contract = new ethers.Contract(address, contractJson.abi, provider);
-    const signer = getSigner(account);
-    const contractWithSigner = contract.connect(signer);
+    const privateKey = '810E2F025713EB18C22B05AA2833A045ABFD7247B56082D131898FD0A9FF33C0';
+    const wallet = new ethers.Wallet(privateKey, getProvider());
+    const contract = getContract();
+    const contractWithSigner = contract.connect(wallet);
     return contractWithSigner;
   } catch (e) {
     console.log('Failed to instantiate compiled contract', e);
@@ -207,4 +207,22 @@ export const getEvents = async options => {
   }));
 
   return output;
+};
+
+export const transactionWithPrivateKey = async () => {
+  const privateKey = '810E2F025713EB18C22B05AA2833A045ABFD7247B56082D131898FD0A9FF33C0';
+  const wallet = new ethers.Wallet(privateKey, getProvider());
+  const contract = getContract();
+  const contractWithSigner = contract.connect(wallet);
+  return contractWithSigner;
+
+  // const tx = await contractWithSigner.addPlayersToTeam(
+  //   '0x627306090abaB3A6e1400e9345bC60c78a8BEf57',
+  //   'Eliyeah',
+  // );
+
+  // await tx.wait();
+
+  // // Call the Contract's getValue() method again
+  // const newValue = await contract.getValue();
 };
