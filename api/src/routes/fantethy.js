@@ -11,17 +11,86 @@ const router = express.Router();
 
 router.get('/players', async (req, res, next) => {
   const players = [
-    { name: 'Eli Manning', id: 0 },
-    { name: 'Myles Garrett', id: 1 },
-    { name: 'Devaroe Lawrence', id: 2 },
-    { name: 'Larry Ogunjobi', id: 3 },
-    { name: 'Sheldon Richardson', id: 4 },
-    { name: 'Chris Smith', id: 5 },
-    { name: 'Chad Thomas', id: 6 },
-    { name: 'Olivier Vernon', id: 7 },
-    { name: 'Adarius Taylor', id: 8 },
-    { name: 'Malik Jefferson', id: 9 },
-    { name: 'Mack Wilson', id: 10 },
+    {
+      name: 'Eli Manning',
+      id: 0,
+    },
+    {
+      name: 'Myles Garrett',
+      id: 1,
+    },
+    {
+      name: 'Devaroe Lawrence',
+      id: 2,
+    },
+    {
+      name: 'Larry Ogunjobi',
+      id: 3,
+    },
+    {
+      name: 'Sheldon Richardson',
+      id: 4,
+    },
+    {
+      name: 'Chris Smith',
+      id: 5,
+    },
+    {
+      name: 'Chad Thomas',
+      id: 6,
+    },
+    {
+      name: 'Olivier Vernon',
+      id: 7,
+    },
+    {
+      name: 'Adarius Taylor',
+      id: 8,
+    },
+    {
+      name: 'Malik Jefferson',
+      id: 9,
+    },
+    {
+      name: 'Mack Wilson',
+      id: 10,
+    },
+    {
+      name: 'Josh Allen',
+      id: 11,
+    },
+    {
+      name: 'Matt Barkley',
+      id: 12,
+    },
+    {
+      name: 'Frank Gore',
+      id: 13,
+    },
+    {
+      name: 'Devin Singletary',
+      id: 14,
+    },
+    {
+      name: 'T.J. Yeldon',
+      id: 15,
+    },
+    {
+      name: 'Patrick DiMarco',
+      id: 16,
+    },
+    {
+      name: 'Cole Beasley',
+      id: 17,
+    },
+    {
+      name: 'John Brown',
+      id: 18,
+    },
+    {
+      name: 'Robert Foster',
+      id: 19,
+    },
   ];
 
   try {

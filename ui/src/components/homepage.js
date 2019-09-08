@@ -162,9 +162,9 @@ class MobileContainer extends Component {
                   <Icon name="sidebar" />
                 </Menu.Item>
                 <Menu.Item position="right">
-                  <Button as="a" href="/login" inverted>
+                  {/* <Button as="a" href="/login" inverted>
                     Log In
-                  </Button>
+                  </Button> */}
                   <Button as="a" inverted style={{ marginLeft: '0.5em' }}>
                     Sign Up
                   </Button>

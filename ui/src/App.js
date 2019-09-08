@@ -41,9 +41,9 @@ function AppRouter() {
               </Menu.Item>
               <Menu.Item position="right">
                 <Button as="a" href="/login/" inverted={!fixed}>
-                  Log in
+                  Log out
                 </Button>
-                <Button
+                {/* <Button
                   as="a"
                   href="/signup/"
                   inverted={!fixed}
@@ -51,7 +51,7 @@ function AppRouter() {
                   style={{ marginLeft: '0.5em' }}
                 >
                   Sign Up
-                </Button>
+                </Button> */}
               </Menu.Item>
             </Container>
           </Menu>

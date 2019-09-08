@@ -48,7 +48,7 @@ const League = () => {
       await distributePoints('0xC5fdf4076b8F3A5357c5E395ab970B5B54098Fef', 15);
       await distributePoints('0x821aEa9a577a9b44299B9c15c88cf3087F3b5544', 10);
       fetchTeamlist();
-      setWinner(true);
+      setTimeout(function(){ setWinner(true);fetchTeamlist(); }, 10000);
     } catch (e) {
       console.log(e);
     }
