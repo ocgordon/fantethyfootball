@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, List, Image, Button } from 'semantic-ui-react';
 import { getRequest, addPlayers } from '../api';
-import Torus from '@toruslabs/torus-embed';
-import Web3 from 'web3';
 
 const Draft = () => {
   const [Teamlist, setTeamlist] = useState([[0], [0], [0], [0]]);
