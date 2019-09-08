@@ -24,8 +24,8 @@ export const getPlayersOnTeam = async user => {
 
 export const assignPoints = async (user, points) => {
   try {
-    const contract = await getContract();
-    const pointsDistributed = await contract.distributePoints(user, points);
+    const contractWithSigner = await transactionWithPrivateKey();
+    const pointsDistributed = await contractWithSigner.distributePoints(user, points);
     return pointsDistributed;
   } catch (e) {
     return new Error(e);
@@ -54,8 +54,7 @@ export const getAllPoints = async () => {
     const allPoints = [];
     for (let i = 0; i < 4; i++) {
       const pointsDistributed = await contract.userPoints(users[i]);
-      allPoints.push(pointsDistributed);
-      console.log(allPoints);
+      allPoints.push(pointsDistributed.toNumber());
     }
     return allPoints;
   } catch (e) {
