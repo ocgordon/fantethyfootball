@@ -128,13 +128,13 @@ export const getContract = () => {
  * @return {ethers.Contract} - Returns contract object.
  */
 export const getContractWithSigner = account => {
-  // const contractJson = Fantethy;
-  // const { address } = Fantethy.networks[Object.keys(Fantethy.networks)[0]];
+  const contractJson = Fantethy;
+  const { address } = Fantethy.networks[Object.keys(Fantethy.networks)[0]];
   try {
-    const privateKey = '810E2F025713EB18C22B05AA2833A045ABFD7247B56082D131898FD0A9FF33C0';
-    const wallet = new ethers.Wallet(privateKey, getProvider());
-    const contract = getContract();
-    const contractWithSigner = contract.connect(wallet);
+    const provider = getProvider();
+    const contract = new ethers.Contract(address, contractJson.abi, provider);
+    const signer = getSigner(account);
+    const contractWithSigner = contract.connect(signer);
     return contractWithSigner;
   } catch (e) {
     console.log('Failed to instantiate compiled contract', e);

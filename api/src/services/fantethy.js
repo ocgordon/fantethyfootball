@@ -1,10 +1,11 @@
-import { getContractWithSigner, getContract } from '../ethers';
+import { getContractWithSigner, getContract, transactionWithPrivateKey } from '../ethers';
 
 export const addPlayersToTeam = async (user, player) => {
   try {
-    const contract = await getContractWithSigner();
-    const receipt = await contract.addPlayersToTeam(user, player);
-    return receipt;
+    const contractWithSigner = await transactionWithPrivateKey();
+    const tx = await contractWithSigner.addPlayersToTeam(user, player);
+    await tx.wait();
+    return tx;
   } catch (e) {
     console.log(e);
     return new Error(e);
@@ -23,8 +24,8 @@ export const getPlayersOnTeam = async user => {
 
 export const assignPoints = async (user, points) => {
   try {
-    const contract = await getContractWithSigner('0xdc3821270026617A3c712f04df9e891c925A1d42');
-    const pointsDistributed = await contract.distributePoints(user);
+    const contract = await getContract();
+    const pointsDistributed = await contract.distributePoints(user, points);
     return pointsDistributed;
   } catch (e) {
     return new Error(e);

@@ -4,7 +4,7 @@ import { getRequest, addPlayers, distributePoints } from '../api';
 
 const League = () => {
   const [Teamlist, setTeamlist] = useState([]);
-  const [Points, setPoints] = useState([]);
+  const [Points, setPoints] = useState([0], [0], [0], [0]);
 
   const fetchTeamlist = async () => {
     try {
@@ -19,7 +19,10 @@ const League = () => {
 
   const simulateGame = async () => {
     try {
-      await distributePoints('0xf17f52151EbEF6C7334FAD080c5704D77216b732', 10);
+      await distributePoints('0x627306090abaB3A6e1400e9345bC60c78a8BEf57', 8);
+      await distributePoints('0xf17f52151EbEF6C7334FAD080c5704D77216b732', 23);
+      await distributePoints('0xC5fdf4076b8F3A5357c5E395ab970B5B54098Fef', 15);
+      await distributePoints('0x821aEa9a577a9b44299B9c15c88cf3087F3b5544', 10);
     } catch (e) {
       console.log(e);
     }

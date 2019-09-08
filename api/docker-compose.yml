@@ -15,13 +15,12 @@ services:
     environment:
       VIRTUAL_HOST: fantethy-api.docker
       WEB3_PROVIDER: 'http://ethboston0.skalenodes.com:10200'
+      PRIVATE_KEY: "${PRIVATE_KEY}"
 
   api-watch:
     build:
       context: ./
       dockerfile: dev.Dockerfile
-      args:
-        - NPM_TOKEN
     command: npm run watch
     volumes:
       - ./src:/app/src:delegated
@@ -52,6 +51,7 @@ services:
     environment:
       SOLC_VERSION: '^0.5.5'
       ETH_HOST: skale
+      PRIVATE_KEY: "${PRIVATE_KEY}"
     logging:
       options:
         max-size: 10m
