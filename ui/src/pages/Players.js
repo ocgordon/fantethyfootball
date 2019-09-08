@@ -15,7 +15,7 @@ const Players = () => {
   };
 
   const playerImage = id =>
-    'https://a.espncdn.com/i/headshots/nfl/players/full/' + parseInt(10460 + id) + '.png';
+    'https://a.espncdn.com/i/headshots/nfl/players/full/' + parseInt(10459 + id) + '.png';
 
   const teamList = team => {
     const listItem = team.map((i, index) => (
@@ -40,8 +40,6 @@ const Players = () => {
   useEffect(() => {
     fetchTeamlist();
   }, []);
-
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   return (
     <Grid divided>

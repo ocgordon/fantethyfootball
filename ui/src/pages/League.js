@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Button, List, Image } from 'semantic-ui-react';
+import { Grid, Button, List, Image, Statistic } from 'semantic-ui-react';
 import { getRequest, addPlayers, distributePoints } from '../api';
 
 const League = () => {
@@ -18,7 +18,7 @@ const League = () => {
   };
 
   const playerImage = id =>
-    'https://a.espncdn.com/i/headshots/nfl/players/full/' + parseInt(10460 + id) + '.png';
+    'https://a.espncdn.com/i/headshots/nfl/players/full/' + parseInt(10459 + id) + '.png';
 
   const teamList = team => {
     const listItem = team.map((i, index) => (
@@ -46,6 +46,7 @@ const League = () => {
       await distributePoints('0xf17f52151EbEF6C7334FAD080c5704D77216b732', 23);
       await distributePoints('0xC5fdf4076b8F3A5357c5E395ab970B5B54098Fef', 15);
       await distributePoints('0x821aEa9a577a9b44299B9c15c88cf3087F3b5544', 10);
+      fetchTeamlist();
     } catch (e) {
       console.log(e);
     }
@@ -64,23 +65,65 @@ const League = () => {
         <Grid.Column>
           <h1>Devon's Team</h1>
           <Grid.Row>{teamList(Teamlist[0])}</Grid.Row>
-          <Grid.Row>{JSON.stringify(Points[0])}</Grid.Row>
+          <Grid.Row>
+            <h2>Devon's Points</h2>
+          </Grid.Row>
+          <Grid.Row>
+            <Statistic color="grey">
+              <Statistic.Value>{JSON.stringify(Points[0])}</Statistic.Value>
+              <Statistic.Label>Points</Statistic.Label>
+            </Statistic>
+          </Grid.Row>
         </Grid.Column>
         <Grid.Column>
           <h1>Olivia's Team</h1>
           <Grid.Row>{teamList(Teamlist[1])}</Grid.Row>
-          <Grid.Row>{JSON.stringify(Points[1])}</Grid.Row>
+          <Grid.Row>
+            <h2>Olivia's Points</h2>
+          </Grid.Row>
+          <Grid.Row>
+            <Statistic color="grey">
+              <Statistic.Value>{JSON.stringify(Points[1])}</Statistic.Value>
+              <Statistic.Label>Points</Statistic.Label>
+            </Statistic>
+          </Grid.Row>
         </Grid.Column>
         <Grid.Column>
           <h1>Bob's Team</h1>
           <Grid.Row>{teamList(Teamlist[2])}</Grid.Row>
-          <Grid.Row>{JSON.stringify(Points[2])}</Grid.Row>
+          <Grid.Row>
+            <h2>Bob's Points</h2>
+          </Grid.Row>
+          <Grid.Row>
+            <Statistic color="grey">
+              <Statistic.Value>{JSON.stringify(Points[2])}</Statistic.Value>
+              <Statistic.Label>Points</Statistic.Label>
+            </Statistic>
+          </Grid.Row>
         </Grid.Column>
         <Grid.Column>
           <h1>Stacy's Team</h1>
           <Grid.Row>{teamList(Teamlist[3])}</Grid.Row>
-          <Grid.Row>{JSON.stringify(Points[3])}</Grid.Row>
+          <Grid.Row>
+            <h2>Stacy's Points</h2>
+          </Grid.Row>
+          <Grid.Row>
+            <Statistic color="grey">
+              <Statistic.Value>{JSON.stringify(Points[3])}</Statistic.Value>
+              <Statistic.Label>Points</Statistic.Label>
+            </Statistic>
+          </Grid.Row>
         </Grid.Column>
+      </Grid.Row>
+      <Grid.Row centered>
+        <h1>WINNER!!!</h1>
+      </Grid.Row>
+      <Grid.Row centered>Olivia</Grid.Row>
+      <Grid.Row>
+        <Statistic color="grey">
+          <Statistic.Value>{JSON.stringify(Points[1])}</Statistic.Value>
+          <Statistic.Label>Points</Statistic.Label>
+        </Statistic>
       </Grid.Row>
     </Grid>
   );

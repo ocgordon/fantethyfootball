@@ -70,7 +70,7 @@ const Draft = () => {
   }, []);
 
   const playerImage = id =>
-    'https://a.espncdn.com/i/headshots/nfl/players/full/' + parseInt(10460 + id) + '.png';
+    'https://a.espncdn.com/i/headshots/nfl/players/full/' + parseInt(10459 + id) + '.png';
 
   const playerList = playersList.map(i => (
     <img
@@ -83,7 +83,7 @@ const Draft = () => {
   ));
 
   const teamList = team => {
-    const listItem = team.map((i, index) => (
+    const listItem = team.map(i => (
       <List.Item>
         <Image
           style={{
