@@ -5,6 +5,7 @@ import { getRequest, addPlayers, distributePoints } from '../api';
 const League = () => {
   const [Teamlist, setTeamlist] = useState([[0], [0], [0], [0]]);
   const [Points, setPoints] = useState([0], [0], [0], [0]);
+  const [winner, setWinner] = useState(false);
 
   const fetchTeamlist = async () => {
     try {
@@ -47,6 +48,7 @@ const League = () => {
       await distributePoints('0xC5fdf4076b8F3A5357c5E395ab970B5B54098Fef', 15);
       await distributePoints('0x821aEa9a577a9b44299B9c15c88cf3087F3b5544', 10);
       fetchTeamlist();
+      setWinner(true);
     } catch (e) {
       console.log(e);
     }
@@ -115,16 +117,24 @@ const League = () => {
           </Grid.Row>
         </Grid.Column>
       </Grid.Row>
-      <Grid.Row centered>
-        <h1>WINNER!!!</h1>
-      </Grid.Row>
-      <Grid.Row centered>Olivia</Grid.Row>
-      <Grid.Row>
-        <Statistic color="grey">
-          <Statistic.Value>{JSON.stringify(Points[1])}</Statistic.Value>
-          <Statistic.Label>Points</Statistic.Label>
-        </Statistic>
-      </Grid.Row>
+      {winner ? (
+        <React.Fragment>
+          <Grid.Row centered>
+            <h1>WINNER!!!</h1>
+          </Grid.Row>
+          <Grid.Row centered>
+            <h2>Olivia</h2>
+          </Grid.Row>
+          <Grid.Row centered>
+            <Statistic color="grey">
+              <Statistic.Value>{Math.max.apply(Math, Points)}</Statistic.Value>
+              <Statistic.Label>Points</Statistic.Label>
+            </Statistic>
+          </Grid.Row>
+        </React.Fragment>
+      ) : (
+        ''
+      )}
     </Grid>
   );
 };
