@@ -23,7 +23,7 @@ export const getPlayersOnTeam = async user => {
 
 export const assignPoints = async (user, points) => {
   try {
-    const contract = await getContractWithSigner('0xf17f52151ebef6c7334fad080c5704d77216b732');
+    const contract = await getContract();
     const pointsDistributed = await contract.distributePoints(user, points);
     return pointsDistributed;
   } catch (e) {
