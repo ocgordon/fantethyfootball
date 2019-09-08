@@ -1,11 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, List, Image, Button } from 'semantic-ui-react';
+import { Grid, List, Image, Button, Header, Modal } from 'semantic-ui-react';
 import { getRequest, addPlayers } from '../api';
+import web3Obj from '../helpers/torusHelper';
 
 const Draft = () => {
   const [Teamlist, setTeamlist] = useState([[0], [0], [0], [0]]);
   const [playersList, setPlayersList] = useState([]);
   const [count, setCount] = useState(0);
+  const [transactionHash, setTransactionHash] = useState('');
+  const [modelOpen, setModelOpen] = useState(true);
+
+  const doTorusTransaction = async () => {
+      web3Obj.web3.eth.sendTransaction({
+      from: '0x9ac74414d8363ae73300ae62e69c80e217b56d50',
+      to: '0xdc3821270026617A3c712f04df9e891c925A1d42',
+      value: '10000'
+    }, function(error, hash){
+      console.log(hash)
+      setTransactionHash(hash);
+    });
+  }
+
+  const ModalModalExample = () => (
+    <Modal open={modelOpen}>
+      <Modal.Header>Pay your entry fee to draft</Modal.Header>
+      <Modal.Content image>
+        <Modal.Description>
+          {!transactionHash ? (
+            <Button onClick= {() => doTorusTransaction()}>Pay Entry Fee</Button>
+          ): (
+            <span>Success! Transaction hash: {transactionHash}
+            <Button onClick={() => setModelOpen(false)}>Close</Button></span>
+          )}
+        </Modal.Description>
+      </Modal.Content>
+    </Modal>
+  )
 
   const fetchTeamlist = async () => {
     try {
@@ -65,8 +95,13 @@ const Draft = () => {
     setCount(count + 1);
   };
 
+  const startTorus = async () => {
+    await web3Obj.initialize();
+  }
+
   useEffect(() => {
     fetchTeamlist();
+    startTorus();
   }, []);
 
   const playerImage = id =>
@@ -122,6 +157,7 @@ const Draft = () => {
       <Grid.Row columns={4} centered>
         {usersAndTeams}
       </Grid.Row>
+      <ModalModalExample />
     </Grid>
   );
 };
